@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4c1h2y4c2dso"]
+
+[ext_resource type="PackedScene" uid="uid://dg1605vk15u2g" path="res://Player/player.tscn" id="1_wj23v"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tm2jk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw7t1"]
+size = Vector2(4300, 274)
+
+[sub_resource type="QuadMesh" id="QuadMesh_fp74c"]
+
+[sub_resource type="Gradient" id="Gradient_3ymtb"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yoyrf"]
+gradient = SubResource("Gradient_3ymtb")
+
+[node name="TestPlatformer" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_wj23v")]
+position = Vector2(0, -300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+material = SubResource("CanvasItemMaterial_tm2jk")
+position = Vector2(0, 225)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_aw7t1")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+position = Vector2(0, -3.5)
+scale = Vector2(4302, 271)
+mesh = SubResource("QuadMesh_fp74c")
+texture = SubResource("GradientTexture2D_yoyrf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -131)
