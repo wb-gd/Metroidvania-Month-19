@@ -18,10 +18,16 @@ gradient = SubResource("Gradient_3ymtb")
 
 [node name="Player" parent="." instance=ExtResource("1_wj23v")]
 position = Vector2(0, -300)
+walkSpeed = 300.0
+maxFallSpeed = 800.0
+jumpSpeed = -600.0
+jumpBufferMSec = 100
+coyoteBufferMSec = 100
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 material = SubResource("CanvasItemMaterial_tm2jk")
-position = Vector2(0, 225)
+position = Vector2(-165, 33)
+scale = Vector2(0.200001, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_aw7t1")
