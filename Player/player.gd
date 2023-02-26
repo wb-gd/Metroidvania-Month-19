@@ -38,18 +38,15 @@ func GetInput():
 		
 	# Store the last time the Jump button was pressed
 	if Input.is_action_just_pressed("ui_up"):
-		print_debug("Jump Pressed")
 		lastJumpPressed = Time.get_ticks_msec()
 	
 	# Jump on ground if pressed within buffer and or coyote buffer
 	if Time.get_ticks_msec() - lastJumpPressed <= jumpBufferMSec:
 		if Time.get_ticks_msec() - lastTimeonGround <= coyoteBufferMSec:
-			print_debug("Jump!")
 			velocity.y = jumpSpeed
 			lastJumpPressed = 0
 			lastTimeonGround = 0
 		elif availableAirJumps > 0:
-			print_debug("Air Jump!")
 			velocity.y = jumpSpeed
 			availableAirJumps -= 1
 			lastJumpPressed = 0
