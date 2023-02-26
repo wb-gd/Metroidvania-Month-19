@@ -1,21 +1,123 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Player/player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Player/ImprovedController.gd" type="Script" id=1]
+[ext_resource path="res://Player/_TEMP_protag_static.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31, 31 )
+extents = Vector2( 22, 85 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
-walkSpeed = 500.0
-maxFallSpeed = 400.0
-jumpSpeed = -800.0
-jumpBufferMSec = 100
-coyoteBufferMSec = 100
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+_acceleration = 90.0
+_maxMoveSpeed = 13.0
+_decceleration = 60.0
+_apexBonus = 2.0
+_fallClamp = 40.0
+_minFallSpeed = 80.0
+_maxFallSpeed = 120.0
+_jumpHeight = -40.0
+_jumpApexThreshold = 10.0
+_earlyEndModifier = 3.0
+_coyoteBuffer = 100
+_jumpBuffer = 100
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 3, -1 )
+scale = Vector2( 0.0589862, 0.0589861 )
 texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4 )
+shape = SubResource( 1 )
+
+[node name="RaysDown" type="Position2D" parent="."]
+visible = false
+position = Vector2( 0, 89 )
+
+[node name="RayDown1" type="RayCast2D" parent="RaysDown"]
+position = Vector2( -22, 0 )
+cast_to = Vector2( 0, 10 )
+collision_mask = 4
+
+[node name="RayDown2" type="RayCast2D" parent="RaysDown"]
+cast_to = Vector2( 0, 10 )
+collision_mask = 4
+
+[node name="RayDown3" type="RayCast2D" parent="RaysDown"]
+position = Vector2( 22, 0 )
+cast_to = Vector2( 0, 10 )
+collision_mask = 4
+
+[node name="RaysUp" type="Position2D" parent="."]
+visible = false
+position = Vector2( 0, -81 )
+
+[node name="RayUp1" type="RayCast2D" parent="RaysUp"]
+position = Vector2( -22, 0 )
+cast_to = Vector2( 0, -10 )
+collision_mask = 4
+
+[node name="RayUp2" type="RayCast2D" parent="RaysUp"]
+cast_to = Vector2( 0, -10 )
+collision_mask = 4
+
+[node name="Rayup3" type="RayCast2D" parent="RaysUp"]
+position = Vector2( 22, 0 )
+cast_to = Vector2( 0, -10 )
+collision_mask = 4
+
+[node name="RaysLeft" type="Position2D" parent="."]
+visible = false
+position = Vector2( -22, 0 )
+
+[node name="RayLeft1" type="RayCast2D" parent="RaysLeft"]
+position = Vector2( 0, 89 )
+cast_to = Vector2( -10, 0 )
+collision_mask = 4
+
+[node name="RayLeft2" type="RayCast2D" parent="RaysLeft"]
+position = Vector2( 0, 44 )
+cast_to = Vector2( -10, 0 )
+collision_mask = 4
+
+[node name="RayLeft3" type="RayCast2D" parent="RaysLeft"]
+cast_to = Vector2( -10, 0 )
+collision_mask = 4
+
+[node name="RayLeft4" type="RayCast2D" parent="RaysLeft"]
+position = Vector2( 0, -44 )
+cast_to = Vector2( -10, 0 )
+collision_mask = 4
+
+[node name="RayLeft5" type="RayCast2D" parent="RaysLeft"]
+position = Vector2( 0, -81 )
+cast_to = Vector2( -10, 0 )
+collision_mask = 4
+
+[node name="RaysRight" type="Position2D" parent="."]
+visible = false
+position = Vector2( 22, 0 )
+
+[node name="RayRight1" type="RayCast2D" parent="RaysRight"]
+position = Vector2( 0, 89 )
+cast_to = Vector2( 10, 0 )
+collision_mask = 4
+
+[node name="RayRight2" type="RayCast2D" parent="RaysRight"]
+position = Vector2( 0, 44 )
+cast_to = Vector2( 10, 0 )
+collision_mask = 4
+
+[node name="RayRight3" type="RayCast2D" parent="RaysRight"]
+cast_to = Vector2( 10, 0 )
+collision_mask = 4
+
+[node name="RayRight4" type="RayCast2D" parent="RaysRight"]
+position = Vector2( 0, -44 )
+cast_to = Vector2( 10, 0 )
+collision_mask = 4
+
+[node name="RayRight5" type="RayCast2D" parent="RaysRight"]
+position = Vector2( 0, -81 )
+cast_to = Vector2( 10, 0 )
+collision_mask = 4

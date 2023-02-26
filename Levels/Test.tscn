@@ -17,21 +17,48 @@ extents = Vector2( 0.5, 0.499998 )
 [node name="Node2D" type="Node2D"]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2( 2, 344 )
+position = Vector2( 2, 10 )
 scale = Vector2( 898, 22 )
 mesh = SubResource( 1 )
 texture = SubResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
-collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
 shape = SubResource( 4 )
 
-[node name="PlayerBody2D" parent="." instance=ExtResource( 1 )]
-minFallSpeed = 200.0
-maxFallSpeed = 1200.0
-jumpSpeed = -600.0
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+position = Vector2( 668, -281 )
+scale = Vector2( 898, 22 )
+mesh = SubResource( 1 )
+texture = SubResource( 3 )
 
-[node name="Camera2D" type="Camera2D" parent="PlayerBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D2/StaticBody2D"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
+position = Vector2( -558, -566 )
+scale = Vector2( 898, 22 )
+mesh = SubResource( 1 )
+texture = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D3/StaticBody2D"]
+shape = SubResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -252 )
+_acceleration = 2500.0
+_maxMoveSpeed = 750.0
+_decceleration = 2000.0
+_fallClamp = 1000.0
+_minFallSpeed = 1800.0
+_maxFallSpeed = 2500.0
+_jumpHeight = -1600.0
+_jumpApexThreshold = -500.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
